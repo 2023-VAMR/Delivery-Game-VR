@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float MaxMotorPower = 1500f;
     [SerializeField] private float MaxSteering = 45f;
     [SerializeField] private float brakePower = 250f;
+    [SerializeField] private float steeringRadius = 6;
     
     void Awake()
     {
@@ -31,16 +32,45 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        Accelerate();
+        Brake();
+        Steer();
+    }
+
+    private void Accelerate()
+    {
         for (int i = 2; i < 4; i++)
         {
             wheels[i].motorTorque = IM.vertical * MaxMotorPower * -1;
-            wheels[i].brakeTorque = IM.isBrake ? brakePower : 0;
         }
-        
-        for (int i = 0; i < 2; i++)
-        {
-            wheels[i].steerAngle = _steeringWheel.steering * MaxSteering;
+    }
 
+    private void Steer()
+    {
+
+        float steering = _steeringWheel.steering;
+        if (steering > 0)
+        {   // rear tracks size is set to 1.5f          wheel base has been set to 2.55f
+            wheels[0].steerAngle = Mathf.Rad2Deg * Mathf.Atan(2.55f / (steeringRadius + (1.5f / 2))) * steering;
+            wheels[1].steerAngle = Mathf.Rad2Deg * Mathf.Atan(2.55f / (steeringRadius - (1.5f / 2))) * steering;
+        }
+        else if (steering < 0)
+        {
+            wheels[0].steerAngle = Mathf.Rad2Deg * Mathf.Atan(2.55f / (steeringRadius - (1.5f / 2))) * steering;
+            wheels[1].steerAngle = Mathf.Rad2Deg * Mathf.Atan(2.55f / (steeringRadius + (1.5f / 2))) * steering;
+        }
+        else
+        {
+            wheels[0].steerAngle = 0;
+            wheels[1].steerAngle = 0;
+        }
+    }
+
+    private void Brake()
+    {
+        for(int i = 0; i < wheels.Length; i++)
+        {
+            wheels[i].brakeTorque = IM.isBrake ? brakePower : 0;
         }
     }
 }

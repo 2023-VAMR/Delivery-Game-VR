@@ -18,6 +18,9 @@ public class InputManager : MonoBehaviour
 
     public bool isBrake;
 
+    [Header("For Debug")]
+    public bool isInputByKeyboard = false;
+
     private void Awake()
     {
         if (Instance)
@@ -30,14 +33,24 @@ public class InputManager : MonoBehaviour
 
     private void Update()
     {
-        //vertical = Input.GetAxis("Vertical");
-        //horizontal = Input.GetAxis("Horizontal");
-        vertical = OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger);
-        isBrake = OVRInput.Get(OVRInput.Button.SecondaryHandTrigger);
 
-        isDownLeftGrabButton = OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger);
-        isDownRightGrabButton = OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger);
-        isUpLeftGrabButton = OVRInput.GetUp(OVRInput.Button.PrimaryIndexTrigger);
-        isUpRightGrabButton = OVRInput.GetUp(OVRInput.Button.SecondaryIndexTrigger);
+
+        if (isInputByKeyboard)
+        {
+            vertical = Input.GetAxis("Vertical");
+            horizontal = Input.GetAxis("Horizontal");
+            isBrake = Input.GetKey(KeyCode.Space);
+        }
+        else
+        {
+            vertical = OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger);
+            isBrake = OVRInput.Get(OVRInput.Button.SecondaryHandTrigger);
+
+            isDownLeftGrabButton = OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger);
+            isDownRightGrabButton = OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger);
+            isUpLeftGrabButton = OVRInput.GetUp(OVRInput.Button.PrimaryIndexTrigger);
+            isUpRightGrabButton = OVRInput.GetUp(OVRInput.Button.SecondaryIndexTrigger);
+        }
+
     }
 }

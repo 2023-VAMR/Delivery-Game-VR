@@ -1,12 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class SteeringWheel : MonoBehaviour
 {
     private InputManager IM;
 
-    public float maxSteering = 120;
+    public float maxSteeringAngle = 120;
     public float steering = 0;
     public float turnDamping = 250;
 
@@ -21,6 +23,8 @@ public class SteeringWheel : MonoBehaviour
     private GameObject _rightHand;
     private Transform _rightHandOriginalParent;
     private bool _isRightHandOnWheel = false;
+
+
 
     private void Start()
     {
@@ -40,22 +44,27 @@ public class SteeringWheel : MonoBehaviour
 
     private void Steering()
     {
-        //SteeringWithKeyboard();
-        CalculateSteeringFromHandRotation();
-        steering = (transform.localEulerAngles.z > 180 ? transform.localEulerAngles.z - 360 : transform.localEulerAngles.z) / maxSteering;
+        if (IM.isInputByKeyboard)
+        {
+            SteeringWithKeyboard();
+        }
+        else
+        {
+            CalculateSteeringFromHandRotation();
+        }
+        steering = (transform.localEulerAngles.z > 180 ? transform.localEulerAngles.z - 360 : transform.localEulerAngles.z) / maxSteeringAngle;
         
     }
 
     private void SteeringWithKeyboard()
     {
         //steering = IM.horizontal;
-        Quaternion rot = Quaternion.Euler(0, 0, IM.horizontal * maxSteering);
+        Quaternion rot = Quaternion.Euler(0, 0, IM.horizontal * maxSteeringAngle);
         transform.localRotation = rot;
     }
 
     private void OnTriggerStay(Collider other)
     {
-        Debug.LogWarning("Stay");
         if (other.CompareTag("RightHand") && !_isRightHandOnWheel && IM.isDownRightGrabButton)
         {
             _rightHand = other.gameObject;
@@ -130,19 +139,26 @@ public class SteeringWheel : MonoBehaviour
         Quaternion rot;
         if (_isRightHandOnWheel && _isLeftHandOnWheel)
         {
-            Quaternion rightRot = Quaternion.Euler(0, 0, -_rightHandOriginalParent.transform.rotation.eulerAngles.z);
-            Quaternion leftRot = Quaternion.Euler(0, 0, -_leftHandOriginalParent.transform.rotation.eulerAngles.z);
-            rot = Quaternion.Slerp(leftRot, rightRot, 0.5f);
+            Quaternion rightAngle = Quaternion.Euler(0, 0, -_rightHandOriginalParent.transform.rotation.eulerAngles.z);
+            Quaternion leftAngle = Quaternion.Euler(0, 0, -_leftHandOriginalParent.transform.rotation.eulerAngles.z);
+            rot = Quaternion.Slerp(rightAngle, leftAngle, 0.5f);
         }
         else if (_isRightHandOnWheel)
         {
             rot = Quaternion.Euler(0, 0, -_rightHandOriginalParent.transform.rotation.eulerAngles.z);
         }
-        else// if (_isLeftHandOnWheel)
+        else if (_isLeftHandOnWheel)
         {
             rot = Quaternion.Euler(0, 0, -_leftHandOriginalParent.transform.rotation.eulerAngles.z);
-            
+
         }
+        else
+        {
+            rot = Quaternion.Slerp(transform.localRotation, Quaternion.identity, 0.5f);
+        }
+
+        //float curAngleZ = curAngle > 180 ? curAngle - 360 : curAngle;
         transform.localRotation = rot;
+
     }
 }
