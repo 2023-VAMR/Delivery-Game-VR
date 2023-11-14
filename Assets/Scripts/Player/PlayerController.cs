@@ -9,8 +9,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private WheelCollider[] wheels;
     private GameObject[] _wheelMeshs;
 
-    private Rigidbody _rigidBody;
     private SteeringWheel _steeringWheel;
+    private Gear _gear;
 
     [SerializeField] private float MaxMotorPower = 1500f;
     [SerializeField] private float MaxSteering = 45f;
@@ -19,10 +19,11 @@ public class PlayerController : MonoBehaviour
     
     void Awake()
     {
-        _rigidBody = GetComponent<Rigidbody>();
+        
         
         _wheelMeshs = GameObject.FindGameObjectsWithTag("WheelMesh");
         _steeringWheel = GetComponentInChildren<SteeringWheel>();
+        _gear = GetComponentInChildren<Gear>();
     }
 
     private void Start()
@@ -39,9 +40,10 @@ public class PlayerController : MonoBehaviour
 
     private void Accelerate()
     {
+        int gearMultiplier = _gear.state == GearState.Drive ? -1 : 1;
         for (int i = 2; i < 4; i++)
         {
-            wheels[i].motorTorque = IM.vertical * MaxMotorPower * -1;
+            wheels[i].motorTorque = IM.vertical * MaxMotorPower * gearMultiplier;
         }
     }
 

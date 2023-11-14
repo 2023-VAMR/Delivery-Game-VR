@@ -1333,10 +1333,10 @@ MonoBehaviour:
   - {fileID: 6051297381454769245}
   - {fileID: 2220698246018335235}
   - {fileID: 3798819940991868220}
-  maxMotorPower: 1500
-  brakePower: 250
-  downForceValue: 0.5
-  radius: 3
+  MaxMotorPower: 250
+  MaxSteering: 45
+  brakePower: 120
+  steeringRadius: 6
 --- !u!1 &6553512108135918725
 GameObject:
   m_ObjectHideFlags: 0
@@ -2175,7 +2175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e544e2a04b7ebc44bad46d3203963cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSteering: 60
+  maxSteeringAngle: 120
   steering: 0
   turnDamping: 250
   snapPosParent: {fileID: 6604089866210768863}
