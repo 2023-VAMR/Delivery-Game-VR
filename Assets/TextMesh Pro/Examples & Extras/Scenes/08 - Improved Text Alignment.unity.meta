@@ -1,22 +1,15 @@
 fileFormatVersion: 2
-<<<<<<< Updated upstream:Assets/LowPolyFoodLite.meta
-guid: 59f18b67229daea4a90afa2a9673f9a0
-=======
 <<<<<<< Updated upstream
-guid: d98fa2d04146cc544ac580fdd935cbfa
->>>>>>> Stashed changes:Assets/Art.meta
-folderAsset: yes
-DefaultImporter:
-  externalObjects: {}
-=======
 <<<<<<< Updated upstream:Assets/TextMesh Pro/Examples & Extras/Scenes/08 - Improved Text Alignment.unity.meta
 guid: 5fe2257128d9401fad0790f581dc8a6f
 =======
 guid: d98fa2d04146cc544ac580fdd935cbfa
 folderAsset: yes
 >>>>>>> Stashed changes:Assets/Art.meta
-DefaultImporter:
+=======
+guid: 5fe2257128d9401fad0790f581dc8a6f
 >>>>>>> Stashed changes
+DefaultImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
