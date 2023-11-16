@@ -1,4 +1,5 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream:Assets/TextMesh Pro/Examples & Extras/Scenes/06 - Extra Rich Text Examples.unity.meta
 guid: 39a1fa96ad2a449b908fca29d4297a74
@@ -8,6 +9,9 @@ guid: 0851605490a599b46b6ac5cb681d93ea
 =======
 guid: 39a1fa96ad2a449b908fca29d4297a74
 >>>>>>> Stashed changes
+=======
+guid: 39a1fa96ad2a449b908fca29d4297a74
+>>>>>>> feat/car
 DefaultImporter:
   userData: 
   assetBundleName: 

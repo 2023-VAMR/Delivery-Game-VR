@@ -7,11 +7,12 @@ TagManager:
   - WheelMesh
   - RightHand
   - LeftHand
+  - Hand
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Minimap
   - Water
   - UI
   - 

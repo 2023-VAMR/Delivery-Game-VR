@@ -1,4 +1,5 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream:Assets/TextMesh Pro/Examples & Extras/Scenes/08 - Improved Text Alignment.unity.meta
 guid: 5fe2257128d9401fad0790f581dc8a6f
@@ -9,6 +10,9 @@ folderAsset: yes
 =======
 guid: 5fe2257128d9401fad0790f581dc8a6f
 >>>>>>> Stashed changes
+=======
+guid: 5fe2257128d9401fad0790f581dc8a6f
+>>>>>>> feat/car
 DefaultImporter:
   userData: 
   assetBundleName: 
