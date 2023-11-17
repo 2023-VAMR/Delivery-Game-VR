@@ -1719,11 +1719,9 @@ GameObject:
   - component: {fileID: 4731673255379484023}
   - component: {fileID: 7310313612668424177}
   - component: {fileID: 3227395958388061421}
-  - component: {fileID: 2648936651400257423}
-  - component: {fileID: 619151389708789032}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Car
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1804,7 +1802,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6465825802123729162}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43512afbd34fa3649a9efb9ee8f60781, type: 3}
   m_Name: 
@@ -1814,43 +1812,10 @@ MonoBehaviour:
   - {fileID: 6051297381454769245}
   - {fileID: 2220698246018335235}
   - {fileID: 3798819940991868220}
-  MaxMotorPower: 1500
+  MaxMotorPower: 250
   MaxSteering: 45
-  brakePower: 250
---- !u!114 &2648936651400257423
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6465825802123729162}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ddbb81e9f625d14ba9ace1d85e5edb8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemPrefab: {fileID: 4102411119739940894, guid: b03cd97b365a245459de1ec933b6f2b6, type: 3}
-  throwForce: 500
---- !u!114 &619151389708789032
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6465825802123729162}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f6166712e877e54ab597c544ed2a239, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wheels:
-  - {fileID: 2734825889343035390}
-  - {fileID: 6051297381454769245}
-  - {fileID: 2220698246018335235}
-  - {fileID: 3798819940991868220}
-  MaxMotorPower: 1500
-  MaxSteering: 45
-  brakePower: 250
+  brakePower: 120
+  steeringRadius: 6
 --- !u!1 &6553512108135918725
 GameObject:
   m_ObjectHideFlags: 0
@@ -1873,11 +1838,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< Updated upstream
-=======
-<<<<<<< Updated upstream
-=======
->>>>>>> Stashed changes
   m_GameObject: {fileID: 6553512108135918725}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -1888,11 +1848,6 @@ Transform:
   - {fileID: 6977913039116321976}
   m_Father: {fileID: 3189590826871834129}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
-=======
->>>>>>> feat/car
 --- !u!1 &6633882019825200287
 GameObject:
   m_ObjectHideFlags: 0
@@ -1985,10 +1940,6 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
->>>>>>> Stashed changes
-=======
->>>>>>> feat/car
   m_GameObject: {fileID: 6633882019825200287}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -2000,10 +1951,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-<<<<<<< HEAD
->>>>>>> Stashed changes
-=======
->>>>>>> feat/car
 --- !u!1 &6855994865659482794
 GameObject:
   m_ObjectHideFlags: 0
