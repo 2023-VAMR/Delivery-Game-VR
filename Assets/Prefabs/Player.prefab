@@ -1719,6 +1719,7 @@ GameObject:
   - component: {fileID: 4731673255379484023}
   - component: {fileID: 7310313612668424177}
   - component: {fileID: 3227395958388061421}
+  - component: {fileID: 2741512730711088464}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1816,6 +1817,22 @@ MonoBehaviour:
   MaxSteering: 45
   brakePower: 120
   steeringRadius: 6
+--- !u!114 &2741512730711088464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6465825802123729162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3eafce61bc79b481b97eab9ab79ff983, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  coin: 0
+  durability: 100
+  reliability: 0
 --- !u!1 &6553512108135918725
 GameObject:
   m_ObjectHideFlags: 0

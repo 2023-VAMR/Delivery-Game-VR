@@ -8,6 +8,8 @@ TagManager:
   - RightHand
   - LeftHand
   - Hand
+  - Car
+  - PoliceCar
   layers:
   - Default
   - TransparentFX
