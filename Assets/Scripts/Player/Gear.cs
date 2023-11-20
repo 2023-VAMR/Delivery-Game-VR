@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 public enum GearState
 {
@@ -9,6 +10,7 @@ public enum GearState
     MaxCount,
 }
 
+[RequireComponent(typeof(AudioSource))]
 public class Gear : MonoBehaviour
 {
     public GearState state;
@@ -16,10 +18,29 @@ public class Gear : MonoBehaviour
     private UIManager UM;
     private InputManager IM;
 
+    private AudioSource _audioSource;
+
+    private readonly string CarGearChangeSFXAddress = "Assets/Sound/SFX/Car_Gear_Change.wav";
+    private AudioClip _carGearChange;
+
+    private void Awake()
+    {
+        _audioSource = GetComponent<AudioSource>();
+        _audioSource.playOnAwake = false;
+        _audioSource.loop = false;
+    }
+
     private void Start()
     {
         UM = UIManager.Instance;
         IM = InputManager.Instance;
+
+        Addressables.LoadAssetAsync<AudioClip>(CarGearChangeSFXAddress).Completed 
+            += (handle) => { 
+                _carGearChange = handle.Result;
+                _audioSource.clip = _carGearChange;
+            };
+
     }
 
     private void OnTriggerStay(Collider other)
@@ -38,6 +59,7 @@ public class Gear : MonoBehaviour
                     break;
             }
             UM.SetGearText(state.ToString());
+            _audioSource.Play();
         }
     }
 }
