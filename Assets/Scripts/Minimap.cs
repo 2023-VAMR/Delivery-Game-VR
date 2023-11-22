@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Minimap : MonoBehaviour
 {
-    [SerializeField] private Transform target;
+    [SerializeField] private Transform _target;
     [Header("Components")]
     [SerializeField] private GameObject targetIcon;
     [SerializeField] private GameObject arrowIcon;
@@ -13,13 +13,23 @@ public class Minimap : MonoBehaviour
     private void Start()
     {
         minimapCamera = GetComponentInChildren<Camera>();
-
-        SetTarget();
     }
     void FixedUpdate()
     {
-        PointToTarget();
+        if (_target != null)
+        {
+            PointToTarget();
+        }
+        else
+        {
+            DisableNavigation();
+        }
+    }
 
+    private void DisableNavigation()
+    {
+        targetIcon.SetActive(false);
+        arrowIcon.SetActive(false);
     }
 
     private void PointToTarget()
@@ -37,9 +47,12 @@ public class Minimap : MonoBehaviour
         }
     }
 
-    public void SetTarget()
+
+    public void SetTarget(Transform target)
     {
-        targetIcon.transform.parent = target;
+        _target = target;
+        targetIcon.SetActive(true);
+        targetIcon.transform.parent = _target;
         targetIcon.transform.position 
             = new Vector3(
                 targetIcon.transform.position.x,
@@ -47,5 +60,10 @@ public class Minimap : MonoBehaviour
                 targetIcon.transform.position.z
             );
         targetIcon.transform.localPosition = new Vector3(0, targetIcon.transform.localPosition.y, 0);
+    }
+
+    public void RemoveTarget()
+    {
+        _target = null;
     }
 }

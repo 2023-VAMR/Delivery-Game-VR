@@ -27,6 +27,61 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1877d4595beda7949ba45ff616baafdc
+    m_Address: Assets/Prefabs/Player.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a532ca2da2cc7e446aa631e3b5d2916a
+    m_Address: Assets/Prefabs/UI/Delivery List Button.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4f21ff7b4eb510245aadeabe5bcbaf04
+    m_Address: Assets/Art/Delivery/PhoneBase.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c906caefb14b4064cb4722b61c61913c
+    m_Address: Assets/Art/Minimap/TargetIcon.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7a1a3d6cf53d26f43b6fd5061d69969d
+    m_Address: Assets/Art/Minimap/PlayerIcon.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 97b2a5647cdfb1c44989bc06379534a1
+    m_Address: Assets/Art/Minimap/MinimapTexture.renderTexture
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5006f893d553f62419dbd1915257e2de
+    m_Address: Assets/Art/Minimap/MinimapBase.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8622759bbe5b2574abab95df1e9ba116
+    m_Address: Assets/Art/Minimap/ArrowIcon.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cb27162a92b974e4ba7f3dc475186d3d
+    m_Address: Assets/Data/Hamburger Point.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 152fe65063758da428d7ad2017fb3461
+    m_Address: Assets/Data/Hospital Point.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b874c0db21b542a468cddde2c79be16b
+    m_Address: Assets/Prefabs/Delivary/DeliveryPoint.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: c5a01b6dc0f1fb548b97e57401c31e1e, type: 2}
   m_SchemaSet:

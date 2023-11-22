@@ -52,5 +52,10 @@ public class InputManager : MonoBehaviour
             isUpRightGrabButton = OVRInput.GetUp(OVRInput.Button.SecondaryIndexTrigger);
         }
 
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 }
