@@ -5,6 +5,12 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
+    public enum InputMode
+    {
+        Drive,
+        Phone,
+    }
+
     public static InputManager Instance;
 
     public float vertical;

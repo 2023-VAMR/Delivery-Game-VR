@@ -82,6 +82,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b03cd97b365a245459de1ec933b6f2b6
+    m_Address: Assets/Prefabs/Carrot Variant.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: c5a01b6dc0f1fb548b97e57401c31e1e, type: 2}
   m_SchemaSet:

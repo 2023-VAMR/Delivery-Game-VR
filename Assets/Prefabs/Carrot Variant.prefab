@@ -60,6 +60,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 4342833515142581002, guid: ac3960763d9ed134b93e9bf2315734f3, type: 3}
+      propertyPath: m_Drag
+      value: 0.01
+      objectReference: {fileID: 0}
     - target: {fileID: 8985614805652588435, guid: ac3960763d9ed134b93e9bf2315734f3, type: 3}
       propertyPath: m_IsTrigger
       value: 0
