@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4410145965659615372, guid: 9a03d54509cb54125aa62175205cd45b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -480.1
+      value: -354
       objectReference: {fileID: 0}
     - target: {fileID: 4410145965659615372, guid: 9a03d54509cb54125aa62175205cd45b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 69.764496
+      value: 69.864494
       objectReference: {fileID: 0}
     - target: {fileID: 4410145965659615372, guid: 9a03d54509cb54125aa62175205cd45b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.1
+      value: 2.8009067
       objectReference: {fileID: 0}
     - target: {fileID: 4410145965659615372, guid: 9a03d54509cb54125aa62175205cd45b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -49,12 +49,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7583174475090190653, guid: 9a03d54509cb54125aa62175205cd45b, type: 3}
+      propertyPath: numToSpawn
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7583174475090190653, guid: 9a03d54509cb54125aa62175205cd45b, type: 3}
       propertyPath: npcPrefabs.Array.data[0]
       value: 
       objectReference: {fileID: 3084024626696190684, guid: f5c8b6dc56a8e634a8f2a0cfbee2941d, type: 3}
     - target: {fileID: 8818315257248083149, guid: 9a03d54509cb54125aa62175205cd45b, type: 3}
       propertyPath: m_Name
-      value: NPC Spawn Point Variant
+      value: Animal Spawn Point
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -20,12 +20,6 @@ public class ThrowItem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.C)) // spawn carrot
-        //{
-        //    GameObject newItem = Instantiate(itemPrefab, transform.position + itemSpawnPoint, transform.rotation); // Instantiate in local space
-        //    newItem.transform.parent = transform;
-        //    itemSpawned = newItem;
-        //}
 
         if (Input.GetMouseButtonDown(0)) // Left click: Throw carrot
         {

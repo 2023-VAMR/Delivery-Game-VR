@@ -10,31 +10,31 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4410145965659615372, guid: 9a03d54509cb54125aa62175205cd45b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -480.1
+      value: -339.52
       objectReference: {fileID: 0}
     - target: {fileID: 4410145965659615372, guid: 9a03d54509cb54125aa62175205cd45b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 69.764496
+      value: 197.8
       objectReference: {fileID: 0}
     - target: {fileID: 4410145965659615372, guid: 9a03d54509cb54125aa62175205cd45b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.1
+      value: 74.78
       objectReference: {fileID: 0}
     - target: {fileID: 4410145965659615372, guid: 9a03d54509cb54125aa62175205cd45b, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.8754261
       objectReference: {fileID: 0}
     - target: {fileID: 4410145965659615372, guid: 9a03d54509cb54125aa62175205cd45b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0.40821788
       objectReference: {fileID: 0}
     - target: {fileID: 4410145965659615372, guid: 9a03d54509cb54125aa62175205cd45b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.23456968
       objectReference: {fileID: 0}
     - target: {fileID: 4410145965659615372, guid: 9a03d54509cb54125aa62175205cd45b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0.10938163
       objectReference: {fileID: 0}
     - target: {fileID: 4410145965659615372, guid: 9a03d54509cb54125aa62175205cd45b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -48,13 +48,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7223126343695499535, guid: 9a03d54509cb54125aa62175205cd45b, type: 3}
+      propertyPath: m_Radius
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7583174475090190653, guid: 9a03d54509cb54125aa62175205cd45b, type: 3}
       propertyPath: npcPrefabs.Array.data[0]
       value: 
       objectReference: {fileID: 1773836419239308, guid: fe8a15cf5f584b249b027810935d9b43, type: 3}
     - target: {fileID: 8818315257248083149, guid: 9a03d54509cb54125aa62175205cd45b, type: 3}
       propertyPath: m_Name
-      value: NPC Spawn Point Variant
+      value: Child Spawn Point
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

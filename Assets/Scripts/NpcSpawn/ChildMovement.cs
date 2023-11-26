@@ -9,12 +9,14 @@ public class ChildMovement : MonoBehaviour
 
     [SerializeField] int moveLength = 15;
 
-    private const string carTag = "Car";
+    private const string playerTag = "Player";
 
     void Start()
     {
         animator = GetComponent<Animator>();
         MoveToRoad(); // Move to road on instantiate
+
+        Destroy(gameObject, 20.0f); // Destroy npc after delay
     }
 
     // Update is called once per frame
@@ -51,10 +53,10 @@ public class ChildMovement : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.CompareTag(carTag))
+        if (other.transform.CompareTag(playerTag))
         {
             animator.SetBool("Death", true);
-            Destroy(gameObject, 5); // Destroy animal after delay
+            Destroy(gameObject, 5); // Destroy npc after delay
         }
 
         // Event for hitting child

@@ -8,39 +8,34 @@ public class GoatMovement : MonoBehaviour
     Animator animator;
     [SerializeField] float moveSpeed = 1.0f;
 
-    [SerializeField] float followSpeed = 0.7f;
+    [SerializeField] float followSpeed = 2.0f;
     [SerializeField] float rotationSpeed = 1.5f;
 
-    [SerializeField] int moveLength = 4;
+    private float blockSize = 4.0f;
 
-    private const string carTag = "Car";
+    private float blockOffset = 3.0f;
 
-    bool itemFollowing = false;
+    private float itemTriggerSphereRadius = 50.0f;
+
+    private const string playerTag = "Player";
+
 
     Collider curr_following = null;
 
     void Start()
     {
         animator = GetComponent<Animator>();
-        MoveToRoad(); // Move to road on instantiate
+
+        int animalNum = transform.parent.childCount;
+        int idx = transform.GetSiblingIndex()-1;
+        MoveToRoad(animalNum, idx); // Move to road on instantiate
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Change this to random spawn 
-        // Or spawn when a car is coming near
-        //if (Input.GetKeyDown(KeyCode.P)) 
-        //{
-        //    Vector3 end = transform.position + Vector3.forward * blockSize;
-        //    animator.SetBool("RunStart", false);
-        //    StartCoroutine(MoveOverSpeed(gameObject, end, moveSpeed));
-
-        //}
-
-        
         // Check if item is in the range of the goat
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 5.0f, 1<<LayerMask.NameToLayer("Item"));
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, itemTriggerSphereRadius, 1<<LayerMask.NameToLayer("Item"));
 
         if (hitColliders.Length > 0)
         {
@@ -49,86 +44,125 @@ public class GoatMovement : MonoBehaviour
             {
                 if (curr_following == null) // code to follow one item at a time
                 {
-                    FollowItem(c.transform, followSpeed, rotationSpeed); // Follow the carrot
-                    itemFollowing = true;
+                    TurnAndMoveToTarget(c.transform.position, followSpeed, rotationSpeed, true); // Follow the carrot
                     curr_following = c; // set current following item
+
+
+                    Destroy(gameObject, 10.0f); // Destroy goat after following carrot
+                    Destroy(c.gameObject, 10.0f); // Destroy carrot once at target position
                 }
 
             }
-            if (c.transform.position.x == transform.position.x && c.transform.position.z == transform.position.z)
-            {
-                animator.SetBool("Eating", true);
-                Destroy(c.gameObject, 2.0f); // Destroy carrot once at target position
-            }
-        }
 
-        if (curr_following==null)
-        {
-            itemFollowing = false;
-            animator.SetBool("Eating", false);
         }
     }
 
 
-    void FollowItem(Transform target, float walk_speed, float rot_speed)
+    void TurnAndMoveToTarget(Vector3 targetPosition, float walk_speed, float rot_speed, bool run)
     {
 
-        Vector3 end = new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z);
+        Vector3 end = new Vector3(targetPosition.x, transform.position.y, targetPosition.z);
 
-        Vector3 direction = target.position - transform.position;
+        Vector3 direction = targetPosition - transform.position;
 
-        StartCoroutine(MoveOverSpeed(gameObject, end, walk_speed));
-        StartCoroutine(TurnOverSpeed(gameObject, direction, rot_speed));
+
+        StartCoroutine(MoveOverSpeed(gameObject, end, walk_speed,run));
+        StartCoroutine(TurnOverSpeed(gameObject, direction, rot_speed,run));
     }
 
 
-    private IEnumerator MoveOverSpeed(GameObject objectToMove,  Vector3 end, float speed)
+    private IEnumerator MoveOverSpeed(GameObject objectToMove,  Vector3 end, float speed, bool run)
     {
         // speed should be 1 unit per second
-        while (objectToMove.transform.position != end)
+        while(!isApproximateVector(objectToMove.transform.position, end, 0.001f))
         {
-            animator.SetBool("RunStart", true);
-            objectToMove.transform.position = Vector3.MoveTowards(objectToMove.transform.position, end, speed * Time.deltaTime);
-            
-            // Set false inside the loop to stop animation immediately
-            if(objectToMove.transform.position == end)
+            // Set animation
+            if (run)
             {
-                animator.SetBool("RunStart", false);
+                animator.SetBool("RunStart", true);
+            }
+            else
+            {
+                animator.SetBool("WalkStart", true);
+            }
+
+
+
+            objectToMove.transform.position = Vector3.MoveTowards(objectToMove.transform.position, end, speed * Time.deltaTime);
+
+            // Set false inside the loop to stop animation immediately
+            if(isApproximateVector(objectToMove.transform.position, end, 0.001f))
+            {
+                // Set animation
+                if (run)
+                {
+                    animator.SetBool("RunStart", false);
+                }
+                else
+                {
+                    animator.SetBool("WalkStart", false);
+                }
             }
 
             yield return new WaitForEndOfFrame();
         }
     }
 
-    private IEnumerator TurnOverSpeed(GameObject objectToTurn,  Vector3 direction, float speed)
+    private IEnumerator TurnOverSpeed(GameObject objectToTurn,  Vector3 direction, float speed, bool run)
     {
         Quaternion rot_angle = Quaternion.LookRotation(direction, Vector3.up); // rotate along y-axis
         Quaternion end_rotation = objectToTurn.transform.rotation * rot_angle;
-        while (!isApproximate(objectToTurn.transform.rotation,end_rotation, 0.0000004f))
+        while (!isApproximateQuaternion(objectToTurn.transform.rotation,end_rotation, 0.0000004f))
         {
-            animator.SetBool("RunStart", true);
+            // Set animation
+            if (run)
+            {
+                animator.SetBool("RunStart", true);
+            }
+            else
+            {
+                animator.SetBool("WalkStart", true);
+            }
+
             objectToTurn.transform.rotation = Quaternion.Slerp(objectToTurn.transform.rotation, end_rotation, speed * Time.deltaTime);
 
             // Set false inside the loop to stop animation immediately
-            if (isApproximate(objectToTurn.transform.rotation, end_rotation, 0.0000004f))
+            if (isApproximateQuaternion(objectToTurn.transform.rotation, end_rotation, 0.0000004f))
             {
-                animator.SetBool("RunStart", false);
+                // Set animation
+                if (run)
+                {
+                    animator.SetBool("RunStart", false);
+                }
+                else
+                {
+                    animator.SetBool("WalkStart", false);
+                }
             }
 
             yield return new WaitForEndOfFrame();
         }
     }
 
-    protected void MoveToRoad()
+    protected void MoveToRoad(int total, int idx)
     {
-        Vector3 end = transform.position + Vector3.forward * moveLength;
-        animator.SetBool("RunStart", false);
-        StartCoroutine(MoveOverSpeed(gameObject, end, moveSpeed));
+        // Move to idx point inside the specified block
+        Vector3 end = transform.position
+            + new Vector3(1, 0, 1) * blockOffset
+            + Vector3.forward * (idx % 3) * blockSize
+            + Vector3.right * (idx / 3) * blockSize
+            + new Vector3(1, 0, 1) * (blockSize / 2) * Random.Range(-1.0f, 1.0f); // Random moving inside the designated block
+
+
+        //Vector3 end = transform.position + Vector3.forward * moveLength;
+        animator.SetBool("WalkStart", false);
+        //StartCoroutine(MoveOverSpeed(gameObject, end, moveSpeed));
+        TurnAndMoveToTarget(end, moveSpeed, rotationSpeed,false);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.CompareTag(carTag))
+        if (other.transform.CompareTag(playerTag))
         {
             animator.SetBool("Death", true);
             Destroy(gameObject, 5); // Destroy animal after delay
@@ -137,8 +171,13 @@ public class GoatMovement : MonoBehaviour
         // Event for hitting goat
     }
 
-    public static bool isApproximate(Quaternion q1, Quaternion q2, float precision)
+    public static bool isApproximateQuaternion(Quaternion q1, Quaternion q2, float precision)
     {
         return Mathf.Abs(Quaternion.Dot(q1, q2)) >= 1 - precision;
+    }
+
+    public static bool isApproximateVector(Vector3 v1, Vector3 v2, float precision)
+    {
+        return Vector3.Distance(v1, v2) <= precision;
     }
 }
