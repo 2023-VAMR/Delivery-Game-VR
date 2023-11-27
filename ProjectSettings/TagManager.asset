@@ -11,6 +11,8 @@ TagManager:
   - Car
   - PoliceCar
   - Inventory
+  - Phone
+  - PhoneContainer
   layers:
   - Default
   - TransparentFX

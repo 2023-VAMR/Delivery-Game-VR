@@ -6,11 +6,12 @@ using UnityEngine.AddressableAssets;
 
 public class ThrowItem : MonoBehaviour
 {
-    [SerializeField] private Camera cam;
+    
     [SerializeField] private float throwForce = 500.0f;
 
     private InputManager IM;
     private Rigidbody _rigidbody;
+    private Camera cam;
 
     Vector3 itemSpawnPoint = new Vector3(0.3f, 0.4f, 0.4f);
 
@@ -22,9 +23,9 @@ public class ThrowItem : MonoBehaviour
     private Vector3 exPos;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        //cam = gameObject.GetComponentInChildren<Camera>();
+        cam = gameObject.GetComponentInChildren<Camera>();
         Addressables.LoadAssetAsync<GameObject>(ItemPrefabAddress).Completed += (handle) => { itemPrefab = handle.Result; };
 
         IM = InputManager.Instance;
@@ -39,7 +40,11 @@ public class ThrowItem : MonoBehaviour
 
     private void FixedUpdate()
     {
-        exPos = transform.position;
+        if(grabbedItem != null)
+        {
+            exPos = grabbedItem.transform.position;
+        }
+        
     }
 
 
@@ -64,13 +69,20 @@ public class ThrowItem : MonoBehaviour
             var itemCollider = grabbedItem.GetComponent <Collider>();
             itemRigidbody.isKinematic = false;
             itemCollider.isTrigger = false;
-            itemRigidbody.AddForce((transform.position - exPos) * Time.deltaTime * throwForce, ForceMode.Impulse);
+            var curPos = grabbedItem.transform.position;
+            var force = (curPos - exPos) * Time.deltaTime * throwForce;
+            itemRigidbody.AddForce(force, ForceMode.Impulse);
             grabbedItem.transform.SetParent(null);
             grabbedItem = null;
-
-
-
         }
+    }
+    public void GrabItem(Transform hand)
+    {
+        if (grabbedItem != null) return;
+        grabbedItem = Instantiate(itemPrefab, hand);
+        grabbedItem.transform.localScale = Vector3.one * 8;
+        grabbedItem.GetComponent<Rigidbody>().isKinematic = true;
+        grabbedItem.GetComponent<Collider>().isTrigger = true;
     }
 
     private void OnCollisionExit(Collision collision)
@@ -78,18 +90,6 @@ public class ThrowItem : MonoBehaviour
         if (collision.gameObject.layer.Equals(LayerMask.NameToLayer("Item")))
         {
             collision.gameObject.GetComponent<Collider>().isTrigger = false;
-        }
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        if (!other.CompareTag("Inventory")) return;
-        if (IM.isDownRightGrabButton)
-        {
-            grabbedItem = Instantiate(itemPrefab, transform);
-            grabbedItem.transform.localScale = Vector3.one * 8;
-            grabbedItem.GetComponent<Rigidbody>().isKinematic = true;
-            grabbedItem.GetComponent<Collider>().isTrigger = true;
         }
     }
 
