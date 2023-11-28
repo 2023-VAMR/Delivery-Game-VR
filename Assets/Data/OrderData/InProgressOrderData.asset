@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 729399be2cb15ae4ba99c8697a71dc34, type: 3}
+  m_Name: InProgressOrderData
+  m_EditorClassIdentifier: 
+  foodPoint: {fileID: 0}
+  destPoint: {fileID: 0}
+  progressTime: 64.64117
+  LimitTime: 130
+  progress: 3
+  result: 0

@@ -15,12 +15,16 @@ public class DeliveryListButton : MonoBehaviour
     private DeliveryPoint _destPoint;
     private float _limitTime;
 
-    public void SetButton(DeliveryPoint foodPoint, DeliveryPoint destPoint, float limitTime)
+    public delegate void OnStartOrderListener();
+    OnStartOrderListener _listener;
+
+
+    public void SetButton(DeliveryPoint foodPoint, DeliveryPoint destPoint, float limitTime, OnStartOrderListener listener)
     {
         _foodPoint = foodPoint;
         _destPoint = destPoint;
         _limitTime = limitTime;
-
+        _listener = listener;
         if(_foodPoint.data.pointImage is not null)
         {
             foodImage.sprite = _foodPoint.data.pointImage;
@@ -36,8 +40,9 @@ public class DeliveryListButton : MonoBehaviour
     public void OnButtonClick()
     {
         bool isSuccess = GameManager.Instance.TryStartOrder(_foodPoint, _destPoint, _limitTime);
-        if(isSuccess)
+        if (isSuccess)
         {
+            _listener();
             Destroy(gameObject);
         }
     }

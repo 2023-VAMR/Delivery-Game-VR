@@ -1,23 +1,11 @@
+using Oculus.Interaction.HandGrab.Recorder.Editor;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 public class GameManager : MonoBehaviour
 {
-    enum OrderProgress
-    {
-        TakeFood,
-        DeliverFood,
-        Done
-    }
-    private class Order
-    {
-        public DeliveryPoint foodPoint;
-        public DeliveryPoint destPoint;
-        public float progressTime = 0;
-        public float LimitTime = 120;
-        public OrderProgress progress;
-    }
 
     public static GameManager Instance;
     private UIManager UM;
@@ -30,7 +18,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float orderAdditionThreshold = 60;
     private float _orderAdditionCount = 0;
 
-    Order _inProgressOrder = null;
+    public bool isProgessOrder
+    {
+        get; 
+        private set;
+    } = false;
+    private OrderData _inProgressOrderData = null;
+    private readonly static string inProgressOrderDataAddress = "Assets/Data/OrderData/InProgressOrderData.asset";
     private void Awake()
     {
         if (Instance)
@@ -48,6 +42,8 @@ public class GameManager : MonoBehaviour
         _foods = foodPointsContainer.GetComponentsInChildren<DeliveryPoint>();
         _destinations = destinationPointsContainer.GetComponentsInChildren<DeliveryPoint>();
 
+        Addressables.LoadAssetAsync<OrderData>(inProgressOrderDataAddress).Completed += (handle) => _inProgressOrderData = handle.Result;
+
         _orderAdditionCount = orderAdditionThreshold - 5;
     }
 
@@ -58,6 +54,10 @@ public class GameManager : MonoBehaviour
         {
             AddNewOrder();
             _orderAdditionCount = 0;
+        }
+        if (isProgessOrder)
+        {
+            _inProgressOrderData.progressTime += Time.deltaTime;
         }
     }
 
@@ -71,57 +71,56 @@ public class GameManager : MonoBehaviour
 
     public bool TryStartOrder(DeliveryPoint food, DeliveryPoint dest, float limitTime = 120)
     {
-        if (_inProgressOrder is not null) return false;
-        _inProgressOrder = StartOrder(food, dest, limitTime);
+        if (isProgessOrder) return false;
+        StartOrder(food, dest, limitTime);
+        isProgessOrder = true;
         return true;
     }
 
-    private Order StartOrder(DeliveryPoint food, DeliveryPoint dest, float limitTime = 120)
+    private void StartOrder(DeliveryPoint food, DeliveryPoint dest, float limitTime = 120)
     {
-        Order newOrder = new()
-        {
-            foodPoint = food,
-            destPoint = dest,
-            progressTime = 0,
-            LimitTime = limitTime,
-            progress = OrderProgress.TakeFood
-        };
-        StartCoroutine(OrderCoroutine(newOrder));
-        return newOrder;
+        _inProgressOrderData.foodPoint = food;
+        _inProgressOrderData.destPoint = dest;
+        _inProgressOrderData.progressTime = 0;
+        _inProgressOrderData.LimitTime = limitTime;
+        _inProgressOrderData.progress = OrderData.Progress.TakeFood;
+        StartCoroutine(OrderCoroutine(_inProgressOrderData));
     }
 
-    IEnumerator OrderCoroutine(Order order)
+    IEnumerator OrderCoroutine(OrderData order)
     {
         
         order.foodPoint.EnablePoint();
         UM.SetMinimapTarget(order.foodPoint.transform);
-        Debug.Log("음식 받으러 가기");
-        yield return new WaitWhile(() => order.progress == OrderProgress.TakeFood);
+        //Debug.Log("음식 받으러 가기");
+        yield return new WaitWhile(() => order.progress == OrderData.Progress.TakeFood);
         
         order.destPoint.EnablePoint();
         UM.SetMinimapTarget(order.destPoint.transform);
-        Debug.Log("배달하기");
-        yield return new WaitWhile(() => order.progress == OrderProgress.DeliverFood);
+        //Debug.Log("배달하기");
+        yield return new WaitWhile(() => order.progress == OrderData.Progress.DeliverFood);
 
         UM.DisableNavigation();
-        _inProgressOrder = null;
-        Debug.Log("배달완료");
+        UM.EnableOrderResultUI();
+        isProgessOrder = false;
+
+        //Debug.Log("배달완료");
     }
 
     public void ArriveDelivaryPoint(DeliveryPoint point)
     {
         DeliveryPoint curPoint;
-        if (_inProgressOrder.progress == OrderProgress.TakeFood)
+        if (_inProgressOrderData.progress == OrderData.Progress.TakeFood)
         {
-            curPoint = _inProgressOrder.foodPoint;
+            curPoint = _inProgressOrderData.foodPoint;
         }
-        else //if(_inProgressOrder.progress == OrderProgress.DeliverFood)
+        else //if(_inProgressOrder.progress == OrderData.Progress.DeliverFood)
         {
-            curPoint = _inProgressOrder.destPoint;
+            curPoint = _inProgressOrderData.destPoint;
         }
         if (curPoint == point)
         {
-            _inProgressOrder.progress++;
+            _inProgressOrderData.progress++;
             point.DisablePoint();
         }
     }

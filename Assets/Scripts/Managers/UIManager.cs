@@ -56,6 +56,11 @@ public class UIManager : MonoBehaviour
         minimap.RemoveTarget();
     }
 
+    public void EnableOrderResultUI() 
+    {
+        phone.FinishOrder();
+    }
+
     public void SetInputTargetTransform(Transform target)
     {
         ovrInputModule.rayTransform = target;
