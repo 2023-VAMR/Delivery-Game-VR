@@ -20,12 +20,16 @@ public class OrderData : ScriptableObject
         Fail,
         Canceled,
     }
-
+    // progress info
     public DeliveryPoint foodPoint;
     public DeliveryPoint destPoint;
     public float progressTime = 0;
-    public float LimitTime = 120;
+    public float limitTime = 120;
     public Progress progress = Progress.NoOrder;
+
+    // result info
+    public int reward = 0;
+    public int relibility = 0;
     public Result result = Result.NotDecided;
     
 }

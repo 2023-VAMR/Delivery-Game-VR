@@ -73,7 +73,7 @@ public class Phone : MonoBehaviour
 
     public void CancelOrder()
     {
-        GoDeliveryResultInfoPage();
+        GM.CancelOrder();
     }
 
     public void FinishOrder()
