@@ -97,6 +97,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6f4e7ec91c65fcc428ece466445263ec
+    m_Address: Assets/Data/Player/PlayerData.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: c5a01b6dc0f1fb548b97e57401c31e1e, type: 2}
   m_SchemaSet:

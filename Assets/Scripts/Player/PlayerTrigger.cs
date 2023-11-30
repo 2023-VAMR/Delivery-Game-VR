@@ -8,7 +8,7 @@ public class PlayerTrigger : MonoBehaviour
     {
         if (other.gameObject.tag == "PoliceCar")
         {
-            this.gameObject.GetComponent<PlayerData>().coin -= 3;
+            this.gameObject.GetComponent<PlayerDataHelper>().coin -= 3;
         }
     }
 }
