@@ -10,32 +10,29 @@ public class Phone : MonoBehaviour
 {
     GameManager GM;
 
-    [SerializeField] private Transform content;
+
 
     private PageController _pageController;
+    private DeliveryOrderListPageController _deliveryOrderListPageController;
 
-    private readonly static string DeliveryButtonPrefabAddress = "Assets/Prefabs/UI/Delivery List Button.prefab";
-    private GameObject _deliveryButtonPrefab;
+
 
     private bool _isGrabbed = false;
 
     private void Awake()
     {
         _pageController = GetComponentInChildren<PageController>();
+        _deliveryOrderListPageController = GetComponentInChildren<DeliveryOrderListPageController>(true);
     }
 
     private void Start()
     {
-        Addressables.LoadAssetAsync<GameObject>(DeliveryButtonPrefabAddress).Completed += (handle) => { _deliveryButtonPrefab = handle.Result; };
         GM = GameManager.Instance;
     }
 
     public void AddNewButton(DeliveryPoint food, DeliveryPoint dest, float limitTime)
     {
-        GameObject gObject = Instantiate(_deliveryButtonPrefab, content);
-        DeliveryListButton button = gObject.GetComponent<DeliveryListButton>();
-
-        button.SetButton(food, dest, limitTime, OnStartOrder);
+        _deliveryOrderListPageController.AddNewButton(food, dest, limitTime, OnStartOrder);
     }
 
     private void OnStartOrder()

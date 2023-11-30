@@ -21,9 +21,11 @@ public class GameManager : MonoBehaviour
         get; 
         private set;
     } = false;
-    Coroutine _orderCoroutine;
     private OrderData _inProgressOrderData = null;
     private readonly static string inProgressOrderDataAddress = "Assets/Data/OrderData/InProgressOrderData.asset";
+
+    private PlayerData _playerData = null;
+    private readonly static string playerDataAddress = "Assets/Data/Player/PlayerData.asset";
     private void Awake()
     {
         if (Instance)
@@ -42,6 +44,7 @@ public class GameManager : MonoBehaviour
         _destinations = destinationPointsContainer.GetComponentsInChildren<DeliveryPoint>();
 
         Addressables.LoadAssetAsync<OrderData>(inProgressOrderDataAddress).Completed += (handle) => _inProgressOrderData = handle.Result;
+        Addressables.LoadAssetAsync<PlayerData>(playerDataAddress).Completed += (handle) => _playerData = handle.Result;
 
         _orderAdditionCount = orderAdditionThreshold - 5;
     }
@@ -85,7 +88,7 @@ public class GameManager : MonoBehaviour
         _inProgressOrderData.progress = OrderData.Progress.TakeFood;
         _inProgressOrderData.reward = (int)limitTime;
         _inProgressOrderData.relibility = (int)limitTime / 10;
-        _orderCoroutine = StartCoroutine(OrderCoroutine(_inProgressOrderData));
+        StartCoroutine(OrderCoroutine(_inProgressOrderData));
     }
 
     IEnumerator OrderCoroutine(OrderData order)
@@ -94,15 +97,15 @@ public class GameManager : MonoBehaviour
         order.foodPoint.EnablePoint();
         UM.SetMinimapTarget(order.foodPoint.transform);
         //Debug.Log("음식 받으러 가기");
-        yield return new WaitWhile(() => order.progress == OrderData.Progress.TakeFood);
+        yield return new WaitWhile(() => order.progress == OrderData.Progress.TakeFood && order.result != OrderData.Result.Canceled);
         
         order.destPoint.EnablePoint();
         UM.SetMinimapTarget(order.destPoint.transform);
         //Debug.Log("배달하기");
-        yield return new WaitWhile(() => order.progress == OrderData.Progress.DeliverFood);
+        yield return new WaitWhile(() => order.progress == OrderData.Progress.DeliverFood && order.result != OrderData.Result.Canceled);
 
         CalculateOrderResult();
-
+        FinishOrder();
         //Debug.Log("배달완료");
     }
 
@@ -124,19 +127,33 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void CalculateOrderResult()
+    private void CalculateOrderResult()
     {
-        bool isSuccess = _inProgressOrderData.limitTime >= _inProgressOrderData.progressTime;
-        if (isSuccess)
+        if(_inProgressOrderData.result == OrderData.Result.Canceled)
         {
-            _inProgressOrderData.result = OrderData.Result.Success;
+            _inProgressOrderData.reward = 0;
+            _inProgressOrderData.relibility *= -2;
         }
         else
         {
-            _inProgressOrderData.result = OrderData.Result.Fail;
-            _inProgressOrderData.reward = (int)(_inProgressOrderData.reward * 0.7);
-            _inProgressOrderData.relibility *= -1;
+            bool isSuccess = _inProgressOrderData.limitTime >= _inProgressOrderData.progressTime;
+            if (isSuccess)
+            {
+                _inProgressOrderData.result = OrderData.Result.Success;
+            }
+            else
+            {
+                _inProgressOrderData.result = OrderData.Result.Fail;
+                _inProgressOrderData.reward = (int)(_inProgressOrderData.reward * 0.7);
+                _inProgressOrderData.relibility *= -1;
+            }
         }
+    }
+
+    private void FinishOrder()
+    {
+        _playerData.coin += _inProgressOrderData.reward;
+        _playerData.reliability += _inProgressOrderData.relibility;
         UM.DisableNavigation();
         UM.EnableOrderResultUI();
         isProgessOrder = false;
@@ -145,12 +162,5 @@ public class GameManager : MonoBehaviour
     public void CancelOrder()
     {
         _inProgressOrderData.result = OrderData.Result.Canceled;
-        _inProgressOrderData.reward = 0;
-        _inProgressOrderData.relibility *= -2;
-
-        StopCoroutine(_orderCoroutine);
-        UM.DisableNavigation();
-        UM.EnableOrderResultUI();
-        isProgessOrder = false;
     }
 }

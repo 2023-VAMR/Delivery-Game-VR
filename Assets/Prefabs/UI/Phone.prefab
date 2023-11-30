@@ -4571,6 +4571,7 @@ GameObject:
   - component: {fileID: 1233591289326556624}
   - component: {fileID: 1475386998468525848}
   - component: {fileID: 996425071316660686}
+  - component: {fileID: 5815854002465822836}
   m_Layer: 0
   m_Name: Delivery Order List Page
   m_TagString: Untagged
@@ -4636,6 +4637,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5815854002465822836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5201130432374218970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b935736986124e746a5c09c1a12c7be9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  content: {fileID: 2275806957773537962}
 --- !u!1 &5379138691299511115
 GameObject:
   m_ObjectHideFlags: 0
@@ -7934,7 +7948,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfd5f0c12c311924a8d9e45507413e71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  content: {fileID: 2275806957773537962}
 --- !u!54 &924838525544270425
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8261,6 +8274,7 @@ GameObject:
   - component: {fileID: 1077921313898066553}
   - component: {fileID: 6114749696274294470}
   - component: {fileID: 245940351282150321}
+  - component: {fileID: 287186706957797148}
   m_Layer: 0
   m_Name: Home Page
   m_TagString: Untagged
@@ -8354,6 +8368,22 @@ MonoBehaviour:
   m_ChildScaleWidth: 1
   m_ChildScaleHeight: 1
   m_ReverseArrangement: 0
+--- !u!114 &287186706957797148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8695154847759753937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e080aaac7b2645478dbee0e46839e51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coin: {fileID: 1863832611867937146}
+  relibility: {fileID: 2266548861097056621}
+  speed: {fileID: 1105535216625758455}
+  durability: {fileID: 949241622007750489}
 --- !u!1 &8923037557661021372
 GameObject:
   m_ObjectHideFlags: 0
