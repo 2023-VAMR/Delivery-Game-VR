@@ -9,18 +9,25 @@ public class DeliveryOrderListPageController : MonoBehaviour
 
 
     private readonly static string DeliveryButtonPrefabAddress = "Assets/Prefabs/UI/Delivery List Button.prefab";
-    private GameObject _deliveryButtonPrefab;
+    [SerializeField] private GameObject _deliveryButtonPrefab;
 
     void Awake()
     {
-        Addressables.LoadAssetAsync<GameObject>(DeliveryButtonPrefabAddress).Completed += (handle) => { _deliveryButtonPrefab = handle.Result; };
+        LoadPrefab();
     }
 
     public void AddNewButton(DeliveryPoint food, DeliveryPoint dest, float limitTime, DeliveryListButton.OnStartOrderListener OnStartOrder)
     {
+        if (_deliveryButtonPrefab is null) LoadPrefab();
         GameObject gObject = Instantiate(_deliveryButtonPrefab, content);
         DeliveryListButton button = gObject.GetComponent<DeliveryListButton>();
 
         button.SetButton(food, dest, limitTime, OnStartOrder);
+    }
+
+    private void LoadPrefab()
+    {
+        if (_deliveryButtonPrefab is not null) return;
+        Addressables.LoadAssetAsync<GameObject>(DeliveryButtonPrefabAddress).Completed += (handle) => { _deliveryButtonPrefab = handle.Result; };
     }
 }

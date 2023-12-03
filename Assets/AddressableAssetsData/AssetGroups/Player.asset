@@ -102,6 +102,71 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d1662c6a2606bcb43b7d2cd74a591bea
+    m_Address: Assets/Data/FoodPoints/Bagel Point.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 929a3a8accd787b4d934980f3d2e3b88
+    m_Address: Assets/Data/DestinationPoints/Bank Point.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9a5afdf470618eb4a9d0cb2213c01ad4
+    m_Address: Assets/Data/DestinationPoints/FireDepartment Point.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 41df1678fa148ee48877df457b838df7
+    m_Address: Assets/Data/DestinationPoints/PolicePrecinct Point.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6110421b29d6bd84b8b3a472bcd94174
+    m_Address: Assets/Data/DestinationPoints/Apartment_1 Point.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3d8cc335221df44499dae70b6faca623
+    m_Address: Assets/Data/DestinationPoints/Apartment_2 Point.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a363cceab3308f34e81a3d2531438577
+    m_Address: Assets/Data/DestinationPoints/Apartment_3 Point.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bbea4d85debcdca45947b5c7063f4046
+    m_Address: Assets/Data/DestinationPoints/House_1 Point.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d5678b230d55af64b8f36a6dedc2477a
+    m_Address: Assets/Data/DestinationPoints/House_2 Point.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 569d5ef96e9702a44a82258500d481b6
+    m_Address: Assets/Data/DestinationPoints/House_3 Point.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 15848420274fcf848b4198ef38f76db9
+    m_Address: Assets/Data/DestinationPoints/Building_1 Point.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 529e4b37d0a1baa4b9c4bfc48b0e73ca
+    m_Address: Assets/Data/DestinationPoints/Building_2 Point.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6439866f3de0e404a86c47563cab7ba3
+    m_Address: Assets/Data/DestinationPoints/Building_3 Point.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: c5a01b6dc0f1fb548b97e57401c31e1e, type: 2}
   m_SchemaSet:

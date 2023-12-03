@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7d4d090302b1164286e8318878b7d15, type: 3}
   m_Name: Hospital Point
   m_EditorClassIdentifier: 
-  id: 2
+  id: 101
   pointName: Hospital
   pointImage: {fileID: 0}

@@ -4650,6 +4650,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   content: {fileID: 2275806957773537962}
+  _deliveryButtonPrefab: {fileID: 4608057662087600333, guid: a532ca2da2cc7e446aa631e3b5d2916a, type: 3}
 --- !u!1 &5379138691299511115
 GameObject:
   m_ObjectHideFlags: 0

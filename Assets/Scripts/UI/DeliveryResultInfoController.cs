@@ -31,7 +31,6 @@ public class DeliveryResultInfoController : MonoBehaviour
     private void LoadData()
     {
         if (data is null) return;
-        if (rewardText == null) Debug.LogWarning("Why?");
         rewardText.text = data.reward.ToString();
         relibility.text = data.relibility.ToString();
         remainingTime.text = ((int)data.limitTime - (int)data.progressTime).ToString();
