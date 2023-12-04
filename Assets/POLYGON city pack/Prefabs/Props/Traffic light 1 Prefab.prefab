@@ -190,7 +190,7 @@ Transform:
   m_GameObject: {fileID: 1566680539408959604}
   serializedVersion: 2
   m_LocalRotation: {x: 0.00000014901161, y: 0.5049023, z: 0.00000011920929, w: 0.8631766}
-  m_LocalPosition: {x: -10.819981, y: 0.2287178, z: 6.5900016}
+  m_LocalPosition: {x: 0.05, y: 0.2287178, z: 5.85}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -206,7 +206,6 @@ GameObject:
   m_Component:
   - component: {fileID: 465660340612620210}
   - component: {fileID: 4136195487006927795}
-  - component: {fileID: 3459092202553458170}
   - component: {fileID: 8525530649211153214}
   - component: {fileID: 3605124178350110849}
   m_Layer: 0
@@ -225,8 +224,8 @@ Transform:
   m_GameObject: {fileID: 3181848247408383905}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.19003296, y: 0.45498657, z: 4.670004}
-  m_LocalScale: {x: 1, y: 1, z: 10}
+  m_LocalPosition: {x: -0.01, y: 0.45499, z: 5.59}
+  m_LocalScale: {x: 0.19305804, y: 0.2562, z: 11.622}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4948097317502102}
@@ -239,48 +238,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3181848247408383905}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &3459092202553458170
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3181848247408383905}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &8525530649211153214
 BoxCollider:
   m_ObjectHideFlags: 0
