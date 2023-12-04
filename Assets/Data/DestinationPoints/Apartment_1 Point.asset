@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 105
   pointName: Apartment
-  pointImage: {fileID: 0}
+  pointImage: {fileID: 21300000, guid: cde5f49eb74bb95488d1f2cb03bc5e49, type: 3}

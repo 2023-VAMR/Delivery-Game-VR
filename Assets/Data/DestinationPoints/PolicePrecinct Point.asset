@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 104
   pointName: PolicePrecinct
-  pointImage: {fileID: 0}
+  pointImage: {fileID: 21300000, guid: 7a503b517c981814eaa7fb2cf99a5728, type: 3}

@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   pointName: Hamburger
-  pointImage: {fileID: 0}
+  pointImage: {fileID: 21300000, guid: 85352b353ad4cca4ab25f41083e4beb9, type: 3}

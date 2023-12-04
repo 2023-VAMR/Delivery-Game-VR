@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 2
   pointName: Bagel
-  pointImage: {fileID: 0}
+  pointImage: {fileID: 21300000, guid: e2f9c45de005b7b4fad8f003d4cab04a, type: 3}

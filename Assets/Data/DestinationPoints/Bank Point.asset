@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 102
   pointName: Bank
-  pointImage: {fileID: 0}
+  pointImage: {fileID: 21300000, guid: 4eae7ebc666d06a48ab42a4644a99623, type: 3}

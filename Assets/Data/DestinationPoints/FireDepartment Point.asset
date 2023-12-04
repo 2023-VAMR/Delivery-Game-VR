@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 103
   pointName: FireDepartment
-  pointImage: {fileID: 0}
+  pointImage: {fileID: 21300000, guid: 6552bdafdefe2f74db0141a34ec4abe7, type: 3}

@@ -167,6 +167,81 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7a503b517c981814eaa7fb2cf99a5728
+    m_Address: Assets/Art/DestinationPoints/PolicePrecinct_Point.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4eae7ebc666d06a48ab42a4644a99623
+    m_Address: Assets/Art/DestinationPoints/Bank_Point.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 16bbbfb2dde8f7244b3830f127b23331
+    m_Address: Assets/Art/DestinationPoints/House_2_Point.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7770183890a0b114dab7c0db01c565e7
+    m_Address: Assets/Art/DestinationPoints/Hospital_Point.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 76c8f9656a8fb8f42bb98fbab10974ac
+    m_Address: Assets/Art/DestinationPoints/Building_3_Point.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f2426124d252f774db484a34655dc6f6
+    m_Address: Assets/Art/DestinationPoints/Apartment_2_Point.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c587a997ea241114b8bcb36d717fe40f
+    m_Address: Assets/Art/DestinationPoints/Building_1_Point.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cbc968d130547b149a0c5d5b3bf6e7e8
+    m_Address: Assets/Art/DestinationPoints/Building_2_Point.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7dc2fc703093bf745a4f6e43e91e42cf
+    m_Address: Assets/Art/DestinationPoints/Apartment_3_Point.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cde5f49eb74bb95488d1f2cb03bc5e49
+    m_Address: Assets/Art/DestinationPoints/Apartment_1_Point.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9a90336660d1c1e48873fdd6f3f141b1
+    m_Address: Assets/Art/DestinationPoints/House_3_Point.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dcc1c3a4dd416c04ea45a6ec16ba5be7
+    m_Address: Assets/Art/DestinationPoints/House_1_Point.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6552bdafdefe2f74db0141a34ec4abe7
+    m_Address: Assets/Art/DestinationPoints/FireDepartment_Point.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 85352b353ad4cca4ab25f41083e4beb9
+    m_Address: Assets/Art/FoodPoints/Hamburger_Point.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e2f9c45de005b7b4fad8f003d4cab04a
+    m_Address: Assets/Art/FoodPoints/Bagel_Point.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: c5a01b6dc0f1fb548b97e57401c31e1e, type: 2}
   m_SchemaSet:
