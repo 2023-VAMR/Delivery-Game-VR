@@ -32,6 +32,7 @@ public class UIManager : MonoBehaviour
                 UIHelper = Instantiate(handle.Result, transform);
                 ovrInputModule = UIHelper.GetComponentInChildren<OVRInputModule>();
                 SetInputTargetTransform(null);
+                DisableUIInput();
             };
     }
 
@@ -64,5 +65,16 @@ public class UIManager : MonoBehaviour
     public void SetInputTargetTransform(Transform target)
     {
         ovrInputModule.rayTransform = target;
+    }
+
+
+    public void EnableUIInput()
+    {
+        UIHelper.SetActive(true);
+    }
+
+    public void DisableUIInput()
+    {
+        UIHelper.SetActive(false);
     }
 }

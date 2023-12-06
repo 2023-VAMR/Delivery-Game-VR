@@ -9,7 +9,7 @@ using UnityEngine.AddressableAssets;
 public class Phone : MonoBehaviour
 {
     GameManager GM;
-
+    UIManager UM;
 
 
     private PageController _pageController;
@@ -28,6 +28,7 @@ public class Phone : MonoBehaviour
     private void Start()
     {
         GM = GameManager.Instance;
+        UM = UIManager.Instance;
     }
 
     public void AddNewButton(DeliveryPoint food, DeliveryPoint dest, float limitTime)
@@ -83,14 +84,21 @@ public class Phone : MonoBehaviour
     {
         if (_isGrabbed && other.CompareTag("PhoneContainer"))
         {
-            transform.SetParent(other.transform.GetChild(0), false);
-            _isGrabbed = false;
+            Release(other.transform.GetChild(0));
         }
     }
 
     public void Grab(Transform hand)
     {
-        _isGrabbed = true;
         transform.SetParent(hand, false);
+        UM.EnableUIInput();
+        _isGrabbed = true;
+    }
+
+    public void Release(Transform other)
+    {
+        transform.SetParent(other, false);
+        UM.DisableUIInput();
+        _isGrabbed = false;
     }
 }
