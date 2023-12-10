@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,18 +13,27 @@ public class PlayerController : MonoBehaviour
     private SteeringWheel _steeringWheel;
     private Gear _gear;
 
-    [SerializeField] private float MaxMotorPower = 1500f;
+    [SerializeField] private float MaxMotorPower = 15f;
+    private int speedMultiplier = 0;
     [SerializeField] private float MaxSteering = 45f;
-    [SerializeField] private float brakePower = 250f;
+    [SerializeField] private float brakePower = 7.5f;
     [SerializeField] private float steeringRadius = 6;
-    
+
+    private PlayerData _playerData = null;
+    private readonly static string playerDataAddress = "Assets/Data/Player/PlayerData.asset";
+
     void Awake()
     {
-        
         
         _wheelMeshs = GameObject.FindGameObjectsWithTag("WheelMesh");
         _steeringWheel = GetComponentInChildren<SteeringWheel>();
         _gear = GetComponentInChildren<Gear>();
+
+        Addressables.LoadAssetAsync<PlayerData>(playerDataAddress).Completed += (handle) =>
+        {
+            _playerData = handle.Result;
+            speedMultiplier = _playerData.speed;
+        };
     }
 
     private void Start()
@@ -43,7 +53,7 @@ public class PlayerController : MonoBehaviour
         int gearMultiplier = _gear.state == GearState.Drive ? -1 : 1;
         for (int i = 2; i < 4; i++)
         {
-            wheels[i].motorTorque = IM.vertical * MaxMotorPower * gearMultiplier;
+            wheels[i].motorTorque = IM.vertical * MaxMotorPower * speedMultiplier * gearMultiplier;
         }
     }
 
@@ -72,7 +82,7 @@ public class PlayerController : MonoBehaviour
     {
         for(int i = 0; i < wheels.Length; i++)
         {
-            wheels[i].brakeTorque = IM.isBrake ? brakePower : 0;
+            wheels[i].brakeTorque = IM.isBrake ? brakePower * speedMultiplier : 0;
         }
     }
 }

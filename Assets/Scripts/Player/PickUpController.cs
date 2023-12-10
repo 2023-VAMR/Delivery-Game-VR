@@ -43,7 +43,10 @@ public class PickUpController : MonoBehaviour
         else if (other.CompareTag("PhoneContainer"))
         {
             var phone = other.GetComponentInChildren<Phone>();
-            GrabPhone(phone, HandGrabber.HandType.Left);
+            if (phone is not null)
+            {
+                GrabPhone(phone, HandGrabber.HandType.Left);
+            }
         }
     }
 
@@ -65,7 +68,6 @@ public class PickUpController : MonoBehaviour
         if(type == HandGrabber.HandType.Left)
         {
             phone.Grab(leftHand.transform);
-            UM.SetInputTargetTransform(rightHand.transform);
         }
         //else
         //{

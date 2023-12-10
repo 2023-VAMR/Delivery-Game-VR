@@ -10,8 +10,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI gearStateUI;
     [SerializeField] private Minimap minimap;
     [SerializeField] private Phone phone;
+    [SerializeField] private Shop shop;
 
     public GameObject UIHelper;
+    [SerializeField] private int _enableUIHelperCount = 0;
     private OVRInputModule ovrInputModule;
     private readonly static string uiHelperAddress = "Assets/Prefabs/Delivary/UIHelpers.prefab";
     private void Awake()
@@ -31,9 +33,13 @@ public class UIManager : MonoBehaviour
             {
                 UIHelper = Instantiate(handle.Result, transform);
                 ovrInputModule = UIHelper.GetComponentInChildren<OVRInputModule>();
-                SetInputTargetTransform(null);
                 DisableUIInput();
             };
+    }
+
+    public void SetInputTargetTransform(Transform target)
+    {
+        ovrInputModule.rayTransform = target;
     }
 
 
@@ -62,19 +68,29 @@ public class UIManager : MonoBehaviour
         phone.FinishOrder();
     }
 
-    public void SetInputTargetTransform(Transform target)
+    public void EnableShopUI()
     {
-        ovrInputModule.rayTransform = target;
+        shop.EnableShopUI();
+    }
+
+    public void DisableShopUI()
+    {
+        shop.DisableShopUI();
     }
 
 
     public void EnableUIInput()
     {
-        UIHelper.SetActive(true);
+        if (UIHelper is null) return;
+        _enableUIHelperCount++;
+        UIHelper.SetActive(_enableUIHelperCount > 0);
     }
 
     public void DisableUIInput()
     {
-        UIHelper.SetActive(false);
+        if (UIHelper is null) return;
+        _enableUIHelperCount--;
+        _enableUIHelperCount = _enableUIHelperCount < 0 ? 0 : _enableUIHelperCount;
+        UIHelper.SetActive(_enableUIHelperCount > 0);
     }
 }

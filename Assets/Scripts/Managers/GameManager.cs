@@ -67,8 +67,15 @@ public class GameManager : MonoBehaviour
     {
         DeliveryPoint food = _foods[Random.Range(0, _foods.Length)];
         DeliveryPoint dest = _destinations[Random.Range(0, _destinations.Length)];
-        int timeLimit = (int)Vector3.Magnitude(food.transform.position - dest.transform.position);
+        int timeLimit = CalculateLimitTime(food.transform.position, dest.transform.position);
         UM.AddOrderInList(food, dest, timeLimit);
+    }
+
+    private int CalculateLimitTime(Vector3 startPos, Vector3 endPos)
+    {
+        int result = (int)Vector3.Magnitude(startPos - endPos);
+        result = Mathf.Clamp(result, 60, 240);
+        return result;
     }
 
     public bool TryStartOrder(DeliveryPoint food, DeliveryPoint dest, float limitTime = 120)
@@ -86,8 +93,9 @@ public class GameManager : MonoBehaviour
         _inProgressOrderData.progressTime = 0;
         _inProgressOrderData.limitTime = limitTime;
         _inProgressOrderData.progress = OrderData.Progress.TakeFood;
-        _inProgressOrderData.reward = (int)limitTime;
-        _inProgressOrderData.relibility = (int)limitTime / 10;
+        _inProgressOrderData.reward = PlayerDataHelper.CalculateSalary(_inProgressOrderData.relibility);
+        _inProgressOrderData.relibility = 3;
+        _inProgressOrderData.result = OrderData.Result.NotDecided;
         StartCoroutine(OrderCoroutine(_inProgressOrderData));
     }
 
@@ -132,7 +140,7 @@ public class GameManager : MonoBehaviour
         if(_inProgressOrderData.result == OrderData.Result.Canceled)
         {
             _inProgressOrderData.reward = 0;
-            _inProgressOrderData.relibility *= -2;
+            _inProgressOrderData.relibility = -3;
         }
         else
         {
@@ -144,8 +152,7 @@ public class GameManager : MonoBehaviour
             else
             {
                 _inProgressOrderData.result = OrderData.Result.Fail;
-                _inProgressOrderData.reward = (int)(_inProgressOrderData.reward * 0.7);
-                _inProgressOrderData.relibility *= -1;
+                _inProgressOrderData.relibility = -1;
             }
         }
     }

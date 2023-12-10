@@ -38,7 +38,7 @@ public class PlayerDataHelper : MonoBehaviour
             };
     }
 
-    public int CalculateSalary()
+    public static int CalculateSalary(int reliability)
     {
         return 10000 + reliability * 1000;
     }
