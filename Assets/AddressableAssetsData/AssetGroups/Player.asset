@@ -242,6 +242,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6da0d151cc51b764e84d661096f412e9
+    m_Address: Assets/Data/ItemShop/ShopData.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: c5a01b6dc0f1fb548b97e57401c31e1e, type: 2}
   m_SchemaSet:

@@ -9,13 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fde73f37ee52fc64f9b8f6f90fa1eb82, type: 3}
-  m_Name: PlayerData
+  m_Script: {fileID: 11500000, guid: 8e4b8d2464f9a114d92dd38ca31a96a3, type: 3}
+  m_Name: ShopData
   m_EditorClassIdentifier: 
-  speed: 60
-  coin: 75000
-  maxDurability: 100
-  durability: 100
-  reliability: 0
-  maxCarrotNum: 4
-  carrotNum: 0
+  carrotPrice: 1000
+  speedUpgradePrice: 5000
+  durabilityUpgradePrice: 3000

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 301638288419343954}
   - component: {fileID: 2065771695916774447}
   - component: {fileID: 7199313811458383157}
+  - component: {fileID: 5365033659556999863}
   m_Layer: 5
   m_Name: CarUpgradeShop
   m_TagString: Untagged
@@ -104,6 +105,20 @@ MonoBehaviour:
   m_ChildScaleWidth: 1
   m_ChildScaleHeight: 1
   m_ReverseArrangement: 0
+--- !u!114 &5365033659556999863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 58627809639046367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea1782380d4f08f408fb5982db27f6ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedUpPrice: {fileID: 5352605619245171985}
+  durabilityUpPrice: {fileID: 3694636435705718261}
 --- !u!1 &270306023315115630
 GameObject:
   m_ObjectHideFlags: 0
@@ -119,7 +134,7 @@ GameObject:
   - component: {fileID: 921824154539809473}
   - component: {fileID: 2379248692594276674}
   m_Layer: 5
-  m_Name: CarUpgradeButton
+  m_Name: DurabilityUpButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -228,7 +243,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8790243626293285636}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5365033659556999863}
+        m_TargetAssemblyTypeName: CarUpgradePageController, Assembly-CSharp
+        m_MethodName: OnClickUpgradeDurability
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &921824154539809473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -794,7 +821,7 @@ GameObject:
   - component: {fileID: 2251972342471359047}
   - component: {fileID: 2958988343987129583}
   m_Layer: 5
-  m_Name: CarUpgradeButton
+  m_Name: Blank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1591,7 +1618,7 @@ GameObject:
   - component: {fileID: 6626327935979547559}
   - component: {fileID: 1666871846253234893}
   m_Layer: 5
-  m_Name: Item Button
+  m_Name: CarrotBuyButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1700,7 +1727,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6489263340026480504}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7942204143768065825}
+        m_TargetAssemblyTypeName: ItemShopPageController, Assembly-CSharp
+        m_MethodName: OnClickBuyCarrot
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6626327935979547559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2904,7 +2943,7 @@ GameObject:
   - component: {fileID: 3722726758751685512}
   - component: {fileID: 1133533917148947164}
   m_Layer: 5
-  m_Name: Item Button
+  m_Name: SpeedUpButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3013,7 +3052,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7645874779769188606}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5365033659556999863}
+        m_TargetAssemblyTypeName: CarUpgradePageController, Assembly-CSharp
+        m_MethodName: OnClickUpgradeSpeed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3722726758751685512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3206,6 +3257,7 @@ GameObject:
   - component: {fileID: 4862172051408096889}
   - component: {fileID: 1752841955642231797}
   - component: {fileID: 5565517048246509404}
+  - component: {fileID: 7942204143768065825}
   m_Layer: 5
   m_Name: ItemShop
   m_TagString: Untagged
@@ -3298,6 +3350,19 @@ MonoBehaviour:
   m_ChildScaleWidth: 1
   m_ChildScaleHeight: 1
   m_ReverseArrangement: 0
+--- !u!114 &7942204143768065825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6757035825226938799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07fdd66033670eb4a9b3e0ee164cda7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  carrotPrice: {fileID: 6272436653726899777}
 --- !u!1 &7216576767437573312
 GameObject:
   m_ObjectHideFlags: 0
