@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde73f37ee52fc64f9b8f6f90fa1eb82, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  _speed: 210
-  _coin: 0
+  _speed: 10
+  _coin: 97100
   maxDurability: 100
   _durability: 100
   _reliability: 0

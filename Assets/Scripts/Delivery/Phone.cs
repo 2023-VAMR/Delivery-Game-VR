@@ -31,6 +31,11 @@ public class Phone : MonoBehaviour
         UM = UIManager.Instance;
     }
 
+    public void OnClickRespawnButton()
+    {
+        GM.RespawnPlayer();
+    }
+
     public void AddNewButton(DeliveryPoint food, DeliveryPoint dest, float limitTime)
     {
         _deliveryOrderListPageController.AddNewButton(food, dest, limitTime, OnStartOrder);

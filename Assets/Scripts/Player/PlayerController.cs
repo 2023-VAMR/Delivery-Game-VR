@@ -6,6 +6,7 @@ using UnityEngine.AddressableAssets;
 public class PlayerController : MonoBehaviour
 {
     private InputManager IM;
+    private GameManager GM;
 
     [SerializeField] private WheelCollider[] wheels;
     private GameObject[] _wheelMeshs;
@@ -40,6 +41,8 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         IM = InputManager.Instance;
+        GM = GameManager.Instance;
+        GM.player = this;
     }
 
     void FixedUpdate()

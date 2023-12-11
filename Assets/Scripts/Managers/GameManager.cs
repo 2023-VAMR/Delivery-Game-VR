@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -7,6 +8,11 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance;
     private UIManager UM;
+
+    [NonSerialized]
+    public PlayerController player;
+
+    [SerializeField] private Transform respawnPoint;
 
     [SerializeField] private GameObject foodPointsContainer;
     private DeliveryPoint[] _foods;
@@ -63,10 +69,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void RespawnPlayer()
+    {
+        _playerData.coin += -1000;
+        player.transform.SetPositionAndRotation(respawnPoint.position, respawnPoint.rotation);
+    }
+
     private void AddNewOrder()
     {
-        DeliveryPoint food = _foods[Random.Range(0, _foods.Length)];
-        DeliveryPoint dest = _destinations[Random.Range(0, _destinations.Length)];
+        DeliveryPoint food = _foods[UnityEngine.Random.Range(0, _foods.Length)];
+        DeliveryPoint dest = _destinations[UnityEngine.Random.Range(0, _destinations.Length)];
         int timeLimit = CalculateLimitTime(food.transform.position, dest.transform.position);
         UM.AddOrderInList(food, dest, timeLimit);
     }
