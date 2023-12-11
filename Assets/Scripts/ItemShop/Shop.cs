@@ -55,12 +55,14 @@ public class Shop : MonoBehaviour
 
     private void UpgradeSpeed()
     {
+        if (_playerData.coin < _shopData.speedUpgradePrice) return;
         _playerData.speed += 10;
         _playerData.coin -= _shopData.speedUpgradePrice;
     }
 
     private void UpgradeDurability()
     {
+        if (_playerData.coin < _shopData.durabilityUpgradePrice) return;
         _playerData.durability += 10;
         _playerData.coin -= _shopData.durabilityUpgradePrice;
 
@@ -68,6 +70,7 @@ public class Shop : MonoBehaviour
 
     private void BuyCarrot()
     {
+        if (_playerData.coin < _shopData.carrotPrice) return;
         _playerData.carrotNum += 1;
         _playerData.coin -= _shopData.carrotPrice;
     }
