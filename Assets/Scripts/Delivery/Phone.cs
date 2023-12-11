@@ -53,15 +53,7 @@ public class Phone : MonoBehaviour
 
     public void GoDeliveryOrderListPage()
     {
-        if (GM.isProgessOrder)
-        {
-            GoCurrentOrderInfoPage();
-        }
-        else
-        {
-            _pageController.GoDeliveryOrderListPage();
-        }
-        
+        _pageController.GoDeliveryOrderListPage();
     }
 
     public void GoCurrentOrderInfoPage()
