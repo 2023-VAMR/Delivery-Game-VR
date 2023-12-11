@@ -32,7 +32,8 @@ public class PlayerController : MonoBehaviour
         Addressables.LoadAssetAsync<PlayerData>(playerDataAddress).Completed += (handle) =>
         {
             _playerData = handle.Result;
-            speedMultiplier = _playerData.speed;
+            UpdateSpeedMultiplier();
+            _playerData.AddListener(UpdateSpeedMultiplier);
         };
     }
 
@@ -84,5 +85,10 @@ public class PlayerController : MonoBehaviour
         {
             wheels[i].brakeTorque = IM.isBrake ? brakePower * speedMultiplier : 0;
         }
+    }
+
+    private void UpdateSpeedMultiplier()
+    {
+        speedMultiplier = _playerData.speed;
     }
 }

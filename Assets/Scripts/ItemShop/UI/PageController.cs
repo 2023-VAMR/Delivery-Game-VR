@@ -40,6 +40,7 @@ namespace ItemShop
             Addressables.LoadAssetAsync<PlayerData>(playerDataAddress).Completed += (handle) => 
             {
                 _playerData = handle.Result;
+                _playerData.AddListener(SetHeader);
                 SetHeader();
             };
         }

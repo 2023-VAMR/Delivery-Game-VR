@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde73f37ee52fc64f9b8f6f90fa1eb82, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  speed: 60
-  coin: 75000
+  _speed: 210
+  _coin: 0
   maxDurability: 100
-  durability: 100
-  reliability: 0
+  _durability: 100
+  _reliability: 0
   maxCarrotNum: 4
-  carrotNum: 0
+  _carrotNum: 0

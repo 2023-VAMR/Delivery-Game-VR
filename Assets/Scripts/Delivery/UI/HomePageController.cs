@@ -20,6 +20,7 @@ public class HomePageController : MonoBehaviour
             += (handle) =>
             {
                 _data = handle.Result;
+                _data.AddListener(LoadData);
                 LoadData();
             };
     }
