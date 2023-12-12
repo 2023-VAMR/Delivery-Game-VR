@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -21,6 +22,8 @@ public class ThrowItem : MonoBehaviour
 
     private Vector3 exPos;
 
+    private float itemTriggerSphereRadius = 3.0f;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -35,6 +38,7 @@ public class ThrowItem : MonoBehaviour
     private void Update()
     {
         ThrowByHand();
+        CheckIsItemFar();
     }
 
     private void FixedUpdate()
@@ -82,6 +86,25 @@ public class ThrowItem : MonoBehaviour
         grabbedItem.transform.localScale = Vector3.one * 8;
         grabbedItem.GetComponent<Rigidbody>().isKinematic = true;
         grabbedItem.GetComponent<Collider>().isTrigger = true;
+    }
+
+    private void CheckIsItemFar()
+    {
+        // Check if item is in the range of the goat
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, itemTriggerSphereRadius, 1 << LayerMask.NameToLayer("Item"));
+
+        if (hitColliders.Length > 0)
+        {
+            foreach(Collider c in hitColliders)
+            {
+                if (c.GetComponent<Rigidbody>().velocity.sqrMagnitude == 0) // if item has stopped bouncing or whatnot
+                {
+                    c.GetComponent<BoxCollider>().enabled = false; // disable colliders for misthrown carrots
+                    Destroy(c.gameObject, 1.0f);
+                }
+            }
+
+        }
     }
 
     private void OnCollisionExit(Collision collision)
