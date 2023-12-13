@@ -38,7 +38,11 @@ public class PickUpController : MonoBehaviour
     {
         if (other.CompareTag("Inventory"))
         {
-            _throwItem.GrabItem(leftHand.transform);
+            var inventory = other.GetComponent<Inventory>();
+            if (inventory.TryUseItem())
+            {
+                _throwItem.GrabItem(leftHand.transform);
+            }
         }
         else if (other.CompareTag("PhoneContainer"))
         {
