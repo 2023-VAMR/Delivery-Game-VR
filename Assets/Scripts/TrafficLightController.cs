@@ -28,14 +28,12 @@ public class TrafficLightController : MonoBehaviour
             SetEmissionColor(redMaterial, redEmissionColor);
             greenMaterial.DisableKeyword("_EMISSION");
             isRedLight = true;
-            Debug.Log("red");
             yield return new WaitForSeconds(signalDuration);
 
             // 초록색 신호
             SetEmissionColor(greenMaterial, greenEmissionColor);
             redMaterial.DisableKeyword("_EMISSION");
             isRedLight = false;
-            Debug.Log("green");
             yield return new WaitForSeconds(signalDuration);
 
         }

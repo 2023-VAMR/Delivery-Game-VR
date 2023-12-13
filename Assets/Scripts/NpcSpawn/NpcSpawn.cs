@@ -6,6 +6,8 @@ using UnityEngine;
 public class NpcSpawn : MonoBehaviour
 {
     [SerializeField] GameObject[] npcPrefabs;
+    [SerializeField] GameObject policecar;
+    [SerializeField] Transform Policepoint;
     bool spawned = false;
     private const string playerTag = "Player";
     public int numToSpawn = 1;
@@ -33,6 +35,11 @@ public class NpcSpawn : MonoBehaviour
                     newItem.transform.parent = transform.parent; // make sibiling
                 }
                 spawned = true;
+                if (npcPrefabs[0].gameObject.CompareTag("Child"))
+                {
+                    npcPrefabs[0].GetComponent<ChildTrigger>().policeCar = this.policecar;
+                    npcPrefabs[0].GetComponent<ChildTrigger>().policecarSpawnPoint = this.Policepoint;
+                }
             }
         }
     }

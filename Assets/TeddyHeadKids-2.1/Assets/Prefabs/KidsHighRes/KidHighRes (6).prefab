@@ -3084,6 +3084,7 @@ GameObject:
   - component: {fileID: 95873191589847898}
   - component: {fileID: 5269256878684893890}
   - component: {fileID: 6749044910306448126}
+  - component: {fileID: -293038041539600438}
   m_Layer: 0
   m_Name: KidHighRes (6)
   m_TagString: Untagged
@@ -3168,6 +3169,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5, y: 10, z: 6}
   m_Center: {x: 0, y: 5, z: 0}
+--- !u!114 &-293038041539600438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1773836419239308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 860ee737a7a504e57bc5fa434f31ecbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  policeCar: {fileID: 0}
+  policecarSpawnPoint: {fileID: 0}
 --- !u!1 &1783268067368562
 GameObject:
   m_ObjectHideFlags: 0
