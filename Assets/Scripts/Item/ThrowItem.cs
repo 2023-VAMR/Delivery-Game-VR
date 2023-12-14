@@ -90,14 +90,14 @@ public class ThrowItem : MonoBehaviour
 
     private void CheckIsItemFar()
     {
-        // Check if item is in the range of the goat
+        // Check if item is in the range of player
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, itemTriggerSphereRadius, 1 << LayerMask.NameToLayer("Item"));
 
         if (hitColliders.Length > 0)
         {
             foreach(Collider c in hitColliders)
             {
-                if (c.GetComponent<Rigidbody>().velocity.sqrMagnitude == 0) // if item has stopped bouncing or whatnot
+                if (c.GetComponent<Rigidbody>().velocity.sqrMagnitude == 0 && grabbedItem == null) // if item has stopped bouncing or whatnot
                 {
                     c.GetComponent<BoxCollider>().enabled = false; // disable colliders for misthrown carrots
                     Destroy(c.gameObject, 1.0f);
