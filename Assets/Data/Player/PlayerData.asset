@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: 
   _speed: 10
-  _coin: 97100
+  _coin: 95000
   maxDurability: 100
   _durability: 100
   _reliability: 0
-  maxCarrotNum: 4
-  _carrotNum: 0
+  maxCarrotNum: 5
+  _carrotNum: 5

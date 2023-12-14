@@ -71,6 +71,7 @@ public class Shop : MonoBehaviour
     private void BuyCarrot()
     {
         if (_playerData.coin < _shopData.carrotPrice) return;
+        if (_playerData.maxCarrotNum <= _playerData.carrotNum) return;
         _playerData.carrotNum += 1;
         _playerData.coin -= _shopData.carrotPrice;
     }

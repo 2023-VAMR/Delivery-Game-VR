@@ -86,6 +86,12 @@ public class PlayerData : ScriptableObject
 
 
     private List<Action> listeners = new List<Action>();
+
+    private void Awake()
+    {
+        coin = 100000; // set coin for test version
+    }
+
     private void OnDataChanged()
     {
         foreach(var listener in listeners)
